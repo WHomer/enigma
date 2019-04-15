@@ -1,7 +1,7 @@
 class Enigma
 
   def encrypt(string, key, date)
-    char_string = ("a".."z").to_a << " "
+    chars = ("a".."z").to_a << " "
     a_key = key[0..1].to_i
     b_key = key[1..2].to_i
     c_key = key[2..3].to_i
@@ -11,12 +11,17 @@ class Enigma
     b_key += date_squared.digits[2]
     c_key += date_squared.digits[1]
     d_key += date_squared.digits[0]
-    a_key = a_key % char_string.length
-    b_key = b_key % char_string.length
-    c_key = c_key % char_string.length
-    d_key = d_key % char_string.length
+    a_key = a_key % chars.length
+    b_key = b_key % chars.length
+    c_key = c_key % chars.length
+    d_key = d_key % chars.length
+    output = ''
+    output << chars.rotate((chars.index(string[0]) + a_key)).first
+    output << chars.rotate((chars.index(string[1]) + b_key)).first
+    output << chars.rotate((chars.index(string[2]) + c_key)).first
+    output << chars.rotate((chars.index(string[3]) + d_key)).first
     require 'pry'; binding.pry
-    
+
 
   end
 
