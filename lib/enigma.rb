@@ -11,19 +11,12 @@ class Enigma
     b_key += date_squared.digits[2]
     c_key += date_squared.digits[1]
     d_key += date_squared.digits[0]
-    a_key = a_key % chars.length
-    b_key = b_key % chars.length
-    c_key = c_key % chars.length
-    d_key = d_key % chars.length
     keys = [d_key, a_key, b_key, c_key]
     output = ''
     string.each_char.with_index do |char, index|
-      # require 'pry'; binding.pry
       output << chars.rotate((chars.index(string[index]) + (keys.rotate!).first)).first
     end
-    require 'pry'; binding.pry
-
-
+    {encryption: output, key: key, date: date}
   end
 
 
