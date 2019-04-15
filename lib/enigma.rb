@@ -15,11 +15,12 @@ class Enigma
     b_key = b_key % chars.length
     c_key = c_key % chars.length
     d_key = d_key % chars.length
+    keys = [d_key, a_key, b_key, c_key]
     output = ''
-    output << chars.rotate((chars.index(string[0]) + a_key)).first
-    output << chars.rotate((chars.index(string[1]) + b_key)).first
-    output << chars.rotate((chars.index(string[2]) + c_key)).first
-    output << chars.rotate((chars.index(string[3]) + d_key)).first
+    string.each_char.with_index do |char, index|
+      # require 'pry'; binding.pry
+      output << chars.rotate((chars.index(string[index]) + (keys.rotate!).first)).first
+    end
     require 'pry'; binding.pry
 
 
