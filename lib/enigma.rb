@@ -10,6 +10,16 @@ class Enigma
     {encryption: output, key: key, date: date}
   end
 
+  def decrypt(string, key, date=generate_date)
+    chars = ("a".."z").to_a << " "
+    keys = generate_keys(key, date)
+    output = ''
+    string.each_char.with_index do |char, index|
+      output << chars.rotate((chars.index(string[index]) - (keys.rotate!).first)).first
+    end
+    {decryption: output, key: key, date: date}
+  end
+
   def generate_keys(key, date)
     date_squared = date.to_i ** 2
     a_key = key[0..1].to_i + date_squared.digits[3]
