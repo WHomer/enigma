@@ -1,6 +1,6 @@
 class Enigma
 
-  def encrypt(string, key, date)
+  def encrypt(string, key=generate_key, date=generate_date)
     chars = ("a".."z").to_a << " "
     keys = generate_keys(key, date)
     output = ''
