@@ -13,6 +13,10 @@ class EnigmaTest < MiniTest::Test
   def test_you_can_generate_keys
     assert_equal [20,3,27,73], @enigma_1.generate_keys("02715", "040895")
   end
+  
+  def test_it_can_generate_a_new_key
+    assert_equal 5, @enigma_1.generate_key.length
+  end
 
   def test_the_enigma_can_encrypt
     result = {encryption: "keder ohulw", key: "02715", date: "040895"}

@@ -19,6 +19,10 @@ class Enigma
     [d_key, a_key, b_key, c_key]
   end
 
+  def generate_key
+    rand.to_s[3..7]
+  end
+
 
 
   # 1. Create a random 5 digit number
