@@ -18,6 +18,10 @@ class EnigmaTest < MiniTest::Test
     assert_equal 5, @enigma_1.generate_key.length
   end
 
+  def test_it_can_generate_a_new_date
+    assert_equal 6, @enigma_1.generate_date.length
+  end
+
   def test_the_enigma_can_encrypt
     result = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal result, @enigma_1.encrypt("hello world", "02715", "040895")

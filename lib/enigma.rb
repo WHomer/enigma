@@ -23,6 +23,10 @@ class Enigma
     rand.to_s[3..7]
   end
 
+  def generate_date
+    Time.now.strftime("%d%m%y")
+  end
+
 
 
   # 1. Create a random 5 digit number
