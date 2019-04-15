@@ -35,4 +35,8 @@ class EnigmaTest < MiniTest::Test
     result = {decryption: "hello world", key: "02715", date: "040895"}
     assert_equal result, @enigma_1.decrypt("keder ohulw", "02715", "040895")
   end
+
+  def test_the_enigma_can_decrypt_without_date
+    assert_equal 11, @enigma_1.decrypt("keder ohulw", "02715")[:decryption].length
+  end
 end
