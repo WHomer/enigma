@@ -1,18 +1,23 @@
 class Enigma
 
   def encrypt(string, key, date)
+    char_string = ("a".."z").to_a << " "
     a_key = key[0..1].to_i
     b_key = key[1..2].to_i
     c_key = key[2..3].to_i
     d_key = key[3..4].to_i
     date_squared = date.to_i ** 2
-    require 'pry'; binding.pry
     a_key += date_squared.digits[3]
     b_key += date_squared.digits[2]
     c_key += date_squared.digits[1]
     d_key += date_squared.digits[0]
+    a_key = a_key % char_string.length
+    b_key = b_key % char_string.length
+    c_key = c_key % char_string.length
+    d_key = d_key % char_string.length
     require 'pry'; binding.pry
-    string = ("a".."z").to_a << " "
+    
+
   end
 
 
