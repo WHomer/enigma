@@ -14,7 +14,6 @@ class Enigma
   end
 
   def decrypt(string, key, date=generate_date)
-    @chars = ("a".."z").to_a << " "
     keys = generate_keys(key, date)
     output = ''
     string.each_char.with_index do |char, index|
