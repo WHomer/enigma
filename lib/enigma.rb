@@ -38,14 +38,4 @@ class Enigma
   def generate_date
     Time.now.strftime("%d%m%y")
   end
-
-
-
-  # 1. Create a random 5 digit number
-  # 1a. take 1-2, 2-3, 3-4, 4-5 and 
-  # 1b. set them to a,b,c,d these are the keys
-  # 2. offset by date DDMMYY
-  # 2a. square root number
-  # 2b. take the last four numbers.
-  # 2c. take each digit and add them to key.
 end
