@@ -12,6 +12,6 @@ class Key
   end
 
   def create_key
-    @key[0..1].to_i + date_squared.digits[@position]
+    @key.to_i + date_squared.digits[@position]
   end
 end
