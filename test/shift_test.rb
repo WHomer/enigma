@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require './lib/shift'
+require './test/test_helper'
 
 class ShiftTest < MiniTest::Test
   def setup
