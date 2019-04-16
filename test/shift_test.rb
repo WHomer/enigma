@@ -17,6 +17,4 @@ class ShiftTest < MiniTest::Test
   def test_you_can_generate_keys
     assert_equal 4, @shift.generate_keys("02715", "040895").length
   end
-  
-
 end
