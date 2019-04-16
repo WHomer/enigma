@@ -23,7 +23,8 @@ class Enigma
   end
 
   def generate_keys(key, date)
-    date_squared = date.to_i ** 2
+    a_key = key.new(key, date, 3)
+    
     a_key = key[0..1].to_i + date_squared.digits[3]
     b_key = key[1..2].to_i + date_squared.digits[2]
     c_key = key[2..3].to_i + date_squared.digits[1]
