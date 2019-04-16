@@ -12,7 +12,6 @@ class Key
   end
 
   def create_key
-    require 'pry'; binding.pry
     @key.to_i + date_squared.digits[@position]
   end
 end

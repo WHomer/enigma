@@ -11,14 +11,14 @@ class KeysTest < MiniTest::Test
   end
 
   def test_it_has_instance_variables
-    assert_equal 3, @key.value
+    assert_equal 2716, @key.value
     assert_equal 1672401025, @key.date_squared
     assert_equal 3, @key.position
     assert_equal "02715", @key.key
   end
 
   def test_can_it_create_a_key
-    assert_equal 3, @key.create_key
+    assert_equal 2716, @key.create_key
   end
 
 end
