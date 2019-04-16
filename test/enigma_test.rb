@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require './lib/enigma'
+require './test/test_helper'
 
 class EnigmaTest < MiniTest::Test
   def setup
