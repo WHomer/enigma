@@ -1,3 +1,4 @@
+require './lib/key'
 class Enigma
 
   def initialize
@@ -8,7 +9,7 @@ class Enigma
     keys = generate_keys(key, date)
     output = ''
     string.each_char.with_index do |char, index|
-      output << @chars.rotate((@chars.index(string[index]) + (keys.rotate!).first)).first
+      output << @chars.rotate((@chars.index(string[index]) + (keys.rotate!).first.value)).first
     end
     {encryption: output, key: key, date: date}
   end
@@ -17,18 +18,16 @@ class Enigma
     keys = generate_keys(key, date)
     output = ''
     string.each_char.with_index do |char, index|
-      output << @chars.rotate((@chars.index(string[index]) - (keys.rotate!).first)).first
+      output << @chars.rotate((@chars.index(string[index]) - (keys.rotate!).first.value)).first
     end
     {decryption: output, key: key, date: date}
   end
 
   def generate_keys(key, date)
-    a_key = key.new(key, date, 3)
-    
-    a_key = key[0..1].to_i + date_squared.digits[3]
-    b_key = key[1..2].to_i + date_squared.digits[2]
-    c_key = key[2..3].to_i + date_squared.digits[1]
-    d_key = key[3..4].to_i + date_squared.digits[0]
+    a_key = Key.new((key[0..1]), date, 3)
+    b_key = Key.new((key[1..2]), date, 2)
+    c_key = Key.new((key[2..3]), date, 1)
+    d_key = Key.new((key[3..4]), date, 0)
     [d_key, a_key, b_key, c_key]
   end
 
