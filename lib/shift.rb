@@ -4,16 +4,20 @@ class Shift
 
   def initialize
     @chars = ("a".."z").to_a << " "
+    @keys = []
   end
 
-  def characters(type, string, key, date)
-    keys = generate_keys(key, date)
+  def characters(type, string, key, date, operator)
+    @keys = generate_keys(key, date)
     output = ''
     string.each_char.with_index do |char, index|
-      output << @chars.rotate((@chars.index(string[index]) + (keys.rotate!).first.value)).first  if type == :encryption
-      output << @chars.rotate((@chars.index(string[index]) - (keys.rotate!).first.value)).first  if type == :decryption
+      output << @chars.rotate(find_index(string, index, operator)).first
     end
     {type => output, key: key, date: date}
+  end
+
+  def find_index(string, index, operator)
+    (@chars.index(string[index]).send(operator, (@keys.rotate!).first.value))
   end
 
   def generate_keys(key, date)
