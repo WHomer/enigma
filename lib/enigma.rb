@@ -10,6 +10,7 @@ class Enigma
   end
 
   def decrypt(string, key, date=generate_date)
+    date ||= generate_date
     @shift.characters(:decryption, string, key, date, '-')
   end
 
