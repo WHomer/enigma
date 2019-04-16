@@ -1,4 +1,3 @@
-require 'minitest/autorun'
 require './test/test_helper'
 
 class EnigmaTest < MiniTest::Test
