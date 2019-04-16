@@ -10,7 +10,8 @@ class Shift
     keys = generate_keys(key, date)
     output = ''
     string.each_char.with_index do |char, index|
-      output << @chars.rotate((@chars.index(string[index]) + (keys.rotate!).first.value)).first
+      output << @chars.rotate((@chars.index(string[index]) + (keys.rotate!).first.value)).first  if type == :encryption
+      output << @chars.rotate((@chars.index(string[index]) - (keys.rotate!).first.value)).first  if type == :decryption
     end
     {type => output, key: key, date: date}
   end

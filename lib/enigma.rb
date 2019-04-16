@@ -1,26 +1,16 @@
-require './lib/key'
+require './lib/shift'
 class Enigma
 
   def initialize
-    @shift = shift.new
+    @shift = Shift.new
   end
 
   def encrypt(string, key=generate_key, date=generate_date)
-    keys = generate_keys(key, date)
-    output = ''
-    string.each_char.with_index do |char, index|
-      output << @chars.rotate((@chars.index(string[index]) + (keys.rotate!).first.value)).first
-    end
-    {encryption: output, key: key, date: date}
+    @shift.characters(:encryption, string, key, date)
   end
 
   def decrypt(string, key, date=generate_date)
-    keys = generate_keys(key, date)
-    output = ''
-    string.each_char.with_index do |char, index|
-      output << @chars.rotate((@chars.index(string[index]) - (keys.rotate!).first.value)).first
-    end
-    {decryption: output, key: key, date: date}
+    @shift.characters(:decryption, string, key, date)
   end
 
   def generate_key
