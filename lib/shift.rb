@@ -1,24 +1,20 @@
 require './lib/key'
+require './lib/offset'
 
 class Shift
 
   def initialize
-    @chars = ("a".."z").to_a << " "
     @keys = []
   end
 
   def characters(type, string, key, date, operator)
     @keys = generate_keys(key, date)
-    output = ''
-    string.each_char.with_index do |char, index|
-      output << @chars.rotate(find_index(string, index, operator)).first
-    end
-    {type => output, key: key, date: date}
+    output = Offset.new(@keys, string)
+    output.method_name(operator)
+    {type => output.message, key: key, date: date}
   end
 
-  def find_index(string, index, operator)
-    (@chars.index(string[index]).send(operator, (@keys.rotate!).first.value))
-  end
+  
 
   def generate_keys(key, date)
     a_key = Key.new((key[0..1]), date, 3)
