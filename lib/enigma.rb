@@ -2,7 +2,7 @@ require './lib/key'
 class Enigma
 
   def initialize
-    @chars = ("a".."z").to_a << " "
+    @shift = shift.new
   end
 
   def encrypt(string, key=generate_key, date=generate_date)
@@ -22,8 +22,6 @@ class Enigma
     end
     {decryption: output, key: key, date: date}
   end
-
-  
 
   def generate_key
     rand.to_s[3..7]
